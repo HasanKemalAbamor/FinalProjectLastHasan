@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Dashboard.css') }}">
+</head>
+<body>
+    <aside class="sidebar">
+        <!-- Sidebar navigation -->
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" class="sidebar-link add-patient-trigger">+ Add New Patient</a></li>
+                <li><a href="/mypatients" class="sidebar-link">See My Patients</a></li>
+                <li><a href="/testresults" class="sidebar-link">See Test Results</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header class="header">
+            <h1>Doctor Dashboard</h1>
+        </header>
+
+        <!-- Content goes here -->
+        <!-- This is where you might include other templates or content dynamically -->
+    </main>
+
+    <script>
+        // JavaScript for interactive sidebar
+        document.querySelector('.add-patient-trigger').addEventListener('click', function() {
+            window.location.href = '/AddPatient';
+        });
+    </script>
+</body>
+</html>

@@ -15,6 +15,27 @@
             <label for="RepublicOfTurkeyIDCardNo">Republic of Turkey ID Card No:</label>
             <input type="text" id="RepublicOfTurkeyIDCardNo" name="RepublicOfTurkeyIDCardNo" required pattern="\d{11}">
         </div>
+        <div class="form-group">
+            <label for="Name">Name:</label>
+            <input type="text" id="Name" name="Name" required>
+        </div>
+        <div class="form-group">
+            <label for="Age">Age:</label>
+            <input type="number" id="Age" name="Age" required>
+        </div>
+        <div class="form-group">
+            <label for="Condition">Condition:</label>
+            <input type="text" id="Condition" name="Condition" required>
+        </div>
+        <div class="form-group">
+            <label for="Sex">Sex:</label>
+            <select id="Sex" name="Sex" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
         <button type="submit" class="submit-btn">Add Patient</button>
     </form>
 </div>

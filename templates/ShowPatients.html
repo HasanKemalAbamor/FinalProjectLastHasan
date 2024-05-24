@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Patients</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Dashboard.css') }}">
+</head>
+<body>
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" class="sidebar-link add-patient-trigger">+ Add New Patient</a></li>
+                <li><a href="/mypatients" class="sidebar-link">See My Patients</a></li>
+                <li><a href="/testresults" class="sidebar-link">See Test Results</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header class="header">
+            <h1>My Patients</h1>
+        </header>
+
+        <section class="patient-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Card No</th>
+                        <th>Patient ID</th>
+                        <th>Condition</th>
+                        <th>Age</th>
+                        <th>Name</th>
+                        <th>Sex</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in patients %}
+                    <tr>
+                        <td>{{ patient[0] }}</td>
+                        <td>{{ patient[1] }}</td>
+                        <td>{{ patient[2] }}</td>
+                        <td>{{ patient[3] }}</td>
+                        <td>{{ patient[4] }}</td>
+                        <td>{{ patient[5] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        document.querySelector('.add-patient-trigger').addEventListener('click', function() {
+            window.location.href = '/AddPatient';
+        });
+    </script>
+</body>
+</html>

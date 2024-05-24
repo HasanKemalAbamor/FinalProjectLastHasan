@@ -1,28 +1,37 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash
 from Controller.AddPatientController import AddPatientController
+from Controller.ShowPatientsController import ShowPatientsController
+from Controller.ShowTestResultsController import ShowTestResultsController
 
-App = Flask(__name__, static_folder='Static')
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'
 
-@App.route('/', methods=['GET'])
-def Dashboard():
-    # Render the Dashboard view which contains the AddPatient form within it
+@app.route('/')
+def dashboard():
     return render_template('DoctorDashboard.html')
 
-
-@App.route('/AddPatient', methods=['GET', 'POST'])
+@app.route('/AddPatient', methods=['GET', 'POST'])
 def add_patient():
-    if request.method == 'GET':
-        # Display the form to the user
-        return render_template('AddPatientView.html')
-    elif request.method == 'POST':
-        # Process the form submission
-        RepublicOfTurkeyIDCardNo = request.form.get('RepublicOfTurkeyIDCardNo')
-        success, message = AddPatientController.AddPatient(RepublicOfTurkeyIDCardNo)
+    if request.method == 'POST':
+        id_number = request.form['RepublicOfTurkeyIDCardNo']
+        success, message = AddPatientController.AddPatient(id_number)
+        flash(message)
         if success:
-            return jsonify({'message': message}), 201
-        else:
-            return jsonify({'error': message}), 400
+            return redirect(url_for('my_patients'))
+    return render_template('AddPatientView.html')
 
+@app.route('/mypatients')
+def my_patients():
+    patients = ShowPatientsController.ShowPatients()
+    return render_template('ShowPatients.html', patients=patients)
+
+@app.route('/testresults', methods=['GET', 'POST'])
+def test_results():
+    results = None
+    if request.method == 'POST':
+        patient_id = request.form['patient_id']
+        results = ShowTestResultsController.GetTestResults(patient_id)
+    return render_template('ShowTestResults.html', results=results)
 
 if __name__ == "__main__":
-    App.run(debug=True)
+    app.run(debug=True)

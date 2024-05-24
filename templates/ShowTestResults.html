@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Test Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Dashboard.css') }}">
+</head>
+<body>
+    <aside class="sidebar">
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" class="sidebar-link add-patient-trigger">+ Add New Patient</a></li>
+                <li><a href="/mypatients" class="sidebar-link">See My Patients</a></li>
+                <li><a href="/testresults" class="sidebar-link">See Test Results</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <header class="header">
+            <h1>See Test Results</h1>
+        </header>
+
+        <section class="search-section">
+            <form action="/testresults" method="POST">
+                <label for="patient_id">Enter Patient ID:</label>
+                <input type="text" id="patient_id" name="patient_id" required>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <section class="results-section">
+            {% if results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test ID</th>
+                        <th>Test Name</th>
+                        <th>Result</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                    <tr>
+                        <td>{{ result[0] }}</td>
+                        <td>{{ result[1] }}</td>
+                        <td>{{ result[2] }}</td>
+                        <td>{{ result[3] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </section>
+    </main>
+
+    <script>
+        document.querySelector('.add-patient-trigger').addEventListener('click', function() {
+            window.location.href = '/AddPatient';
+        });
+    </script>
+</body>
+</html>

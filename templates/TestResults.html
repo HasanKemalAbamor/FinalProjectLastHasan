@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Form.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Test Results</h2>
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>HDL Cholesterol</th>
+                    <th>Hemoglobin</th>
+                    <th>LDL Cholesterol</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in test_results %}
+                <tr>
+                    <td>{{ result.PatientID }}</td>
+                    <td>{{ result.HDLCholesterol }}</td>
+                    <td>{{ result.Hemoglobin }}</td>
+                    <td>{{ result.LDLCholesterol }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+</title>
+</head>
+<body>
+
+</body>
+</html>

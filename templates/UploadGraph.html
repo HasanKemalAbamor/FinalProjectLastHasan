@@ -11,16 +11,24 @@
         <h2>Upload Graph</h2>
         <form action="/upload_graph" method="post" enctype="multipart/form-data">
             <div class="form-group">
+                <label for="patient_id">Patient ID:</label>
+                <input type="text" id="patient_id" name="patient_id" required>
+            </div>
+            <div class="form-group">
                 <label for="graph_file">Graph Image:</label>
-                <input type="file" id="graph_file" name="graph_file" required>
+                <input type="file" id="graph_file" name="graph_file" accept="image/*" required>
             </div>
             <button type="submit" class="submit-btn">Upload</button>
         </form>
         {% if prediction %}
-            <div class="prediction-results">
-                <h3>Prediction Results:</h3>
-                <p>{{ prediction }}</p>
-            </div>
+        <div class="result">
+            <h3>Prediction Result:</h3>
+            <ul>
+                {% for key, value in prediction.items() %}
+                <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
         {% endif %}
     </div>
 </body>

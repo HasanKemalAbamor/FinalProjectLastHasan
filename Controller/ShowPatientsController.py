@@ -2,6 +2,5 @@ from Model.PatientModel import PatientModel
 
 class ShowPatientsController:
     @staticmethod
-    def ShowPatients():
-        patients = PatientModel.GetAllPatients()
-        return patients
+    def show_patients():
+        return PatientModel.get_all_patients()

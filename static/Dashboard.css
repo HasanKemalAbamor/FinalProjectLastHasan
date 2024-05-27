@@ -1,16 +1,19 @@
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
 .sidebar {
-    width: 250px;
+    width: 200px;
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
+    height: 100%;
     background-color: #333;
-    color: white;
+    color: #fff;
+    padding-top: 20px;
 }
 
 .sidebar-nav ul {
@@ -18,26 +21,70 @@ body {
     padding: 0;
 }
 
-.sidebar-nav li a {
-    display: block;
-    padding: 15px;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s;
+.sidebar-nav li {
+    padding: 10px;
 }
 
-.sidebar-nav li a:hover {
-    background-color: #555;
+.sidebar-link {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar-link:hover {
+    background-color: #575757;
 }
 
 .content {
-    margin-left: 250px; /* Same as sidebar width */
+    margin-left: 220px;
     padding: 20px;
 }
 
 .header {
-    background-color: #eee;
-    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.patients-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.patients-list li {
+    margin-bottom: 10px;
+}
+
+.request-test-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.request-test-btn:hover {
+    background-color: #0056b3;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.modal-content {
     text-align: center;
-    font-size: 24px;
+}
+
+.modal-content button {
+    margin: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
 }

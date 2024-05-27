@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Graph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Form.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Upload Graph</h2>
+        <form action="/upload_graph" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="graph_file">Graph Image:</label>
+                <input type="file" id="graph_file" name="graph_file" required>
+            </div>
+            <button type="submit" class="submit-btn">Upload</button>
+        </form>
+        {% if prediction %}
+            <div class="prediction-results">
+                <h3>Prediction Results:</h3>
+                <p>{{ prediction }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

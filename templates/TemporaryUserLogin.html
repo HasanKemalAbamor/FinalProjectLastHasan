@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporary User Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Form.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Temporary User Login</h2>
+        <form action="/temporary_user_login" method="post">
+            <div class="form-group">
+                <label for="republic_of_turkey_id_card_no">Republic of Turkey ID Card No:</label>
+                <input type="text" id="republic_of_turkey_id_card_no" name="republic_of_turkey_id_card_no" required pattern="\d{11}">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+    </div>
+</body>
+</html>
